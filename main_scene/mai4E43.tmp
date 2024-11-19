@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://6ns5gf6y2gys" path="res://hud/hud.tscn" id="4_x6lqc"]
 [ext_resource type="AudioStream" uid="uid://du8tx4ci746f8" path="res://art/House In a Forest Loop.ogg" id="5_cmpe7"]
 [ext_resource type="AudioStream" uid="uid://w3bk32qlbi1e" path="res://art/gameover.wav" id="6_64rg6"]
-[ext_resource type="PackedScene" uid="uid://ce136o4t1wrjp" path="res://powerups/double_powerup/double_powerup.tscn" id="7_meoix"]
+[ext_resource type="PackedScene" uid="uid://tisb1nrfre6b" path="res://powerups/nuke_powerup/nuke_powerup.tscn" id="6_wwfqw"]
 
 [sub_resource type="Gradient" id="Gradient_vpnji"]
 colors = PackedColorArray(0.263812, 0.127635, 0.520061, 1, 0.0366671, 2.88604e-05, 0.152347, 1)
@@ -29,11 +29,11 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_whmjb")
 mob_scene = Array[PackedScene]([ExtResource("2_wrjx6"), ExtResource("3_c0kk0"), ExtResource("2_3lih4"), ExtResource("2_a7pjf")])
-powerup_scene = Array[PackedScene]([ExtResource("7_meoix")])
+powerup_scene = Array[PackedScene]([ExtResource("6_wwfqw")])
 
 [node name="MobTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 0.5
 
 [node name="ScoreTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -45,7 +45,6 @@ one_shot = true
 
 [node name="PowerupTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15

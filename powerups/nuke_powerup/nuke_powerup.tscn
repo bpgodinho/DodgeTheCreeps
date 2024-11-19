@@ -1,5 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://tisb1nrfre6b"]
+[gd_scene load_steps=5 format=3 uid="uid://tisb1nrfre6b"]
 
 [ext_resource type="PackedScene" uid="uid://det0q1fbjox05" path="res://powerups/base_powerup/base_powerup.tscn" id="1_hoh24"]
+[ext_resource type="Script" path="res://powerups/nuke_powerup/nuke_powerup.gd" id="2_bijfe"]
+[ext_resource type="Texture2D" uid="uid://da23igyyg7wx0" path="res://powerups/nuke_powerup/nuke_powerup.png" id="2_sou7g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0g4nm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sou7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="NukePowerup" instance=ExtResource("1_hoh24")]
+texture_filter = 4
+script = ExtResource("2_bijfe")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_0g4nm")
+animation = &"default"

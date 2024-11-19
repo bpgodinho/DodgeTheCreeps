@@ -1,9 +1,7 @@
-class_name BasePowerup extends RigidBody2D
+extends BasePowerup
+
 
 # Called when the node enters the scene tree for the first time.
 func effect() -> void:
+	get_tree().call_group("mob", "queue_free")
 	self.queue_free()
-
-
-func spawn(spawn_pos: Vector2) -> void:
-	position = spawn_pos

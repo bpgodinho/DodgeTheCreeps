@@ -4,6 +4,7 @@ extends Node
 @export var powerup_scene: Array[PackedScene]
 
 var score: int = 0
+var increment: int = 1
 
 @onready var mob_timer: Timer = %MobTimer
 @onready var score_timer: Timer = %ScoreTimer
@@ -61,12 +62,12 @@ func _on_mob_timer_timeout() -> void:
 
 
 func _on_score_timer_timeout() -> void:
-	score += 1
+	score += increment
 	hud.update_score(score)
 
 
 func _on_powerup_timer_timeout() -> void:
 	#Create a new instance of the Powerup scene
-	var powerup := powerup_scene.pick_random().instantiate() as Powerup
+	var powerup := powerup_scene.pick_random().instantiate() as BasePowerup
 	add_child(powerup)
 	powerup.spawn(Vector2(randf_range(64,416),randf_range(64,656)))
