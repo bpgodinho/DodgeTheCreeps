@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tisb1nrfre6b"]
+
+[ext_resource type="PackedScene" uid="uid://det0q1fbjox05" path="res://powerups/base_powerup/base_powerup.tscn" id="1_hoh24"]
+
+[node name="NukePowerup" instance=ExtResource("1_hoh24")]

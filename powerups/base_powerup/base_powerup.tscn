@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://det0q1fbjox05"]
+
+[ext_resource type="Texture2D" uid="uid://7c5ltptcwv33" path="res://powerups/base_powerup/BasePowerup.png" id="1_cjnq5"]
+[ext_resource type="Script" path="res://powerups/base_powerup/base_powerup.gd" id="1_qqer7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mspki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cjnq5")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8t3g"]
+radius = 14.0
+
+[node name="BasePowerup" type="RigidBody2D" groups=["powerup"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_qqer7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_mspki")
+animation = &"static"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g8t3g")

@@ -41,10 +41,16 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.stop()
 
 
-func _on_body_entered(_body: Node2D) -> void:
-	hide() # Player disappears after being hit
-	hit.emit()
-	collision_shape_2d.set_deferred("disabled", true)
+func _on_body_entered(body: Node2D) -> void:
+	match body.get_groups()[0]:
+		"mob":
+			hide() # Player disappears after being hit
+			hit.emit()
+			collision_shape_2d.set_deferred("disabled", true)
+		"powerup":
+			body.effect()
+		_:
+			pass
 
 
 func start(pos: Vector2) -> void:

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmqtsnh8ehcaw"]
+
+[ext_resource type="PackedScene" uid="uid://bfgtvc6xcin25" path="res://mob/mob.tscn" id="1_21ldj"]
+[ext_resource type="Script" path="res://mob/stopping_mob.gd" id="2_em5eo"]
+
+[node name="StoppingMob" instance=ExtResource("1_21ldj")]
+script = ExtResource("2_em5eo")
+
+[node name="MoveTimer" type="Timer" parent="." index="3"]
+autostart = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
