@@ -10,5 +10,6 @@ func effect() -> void:
 	get_tree().get_root().get_child(0).increment += 1
 	print(get_tree().get_root().get_child(0).increment)
 	await get_tree().create_timer(10).timeout
+	print("time out")
 	get_tree().get_root().get_child(0).increment -= 1
 	self.queue_free()

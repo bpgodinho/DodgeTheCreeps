@@ -23,6 +23,7 @@ func _on_player_hit() -> void:
 	# Game Over
 	mob_timer.stop()
 	score_timer.stop()
+	powerup_timer.stop()
 	hud.show_game_over()
 	background_music.stop()
 	game_over_music.play()
