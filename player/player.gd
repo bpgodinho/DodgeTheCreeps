@@ -42,15 +42,11 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	match body.get_groups()[0]:
-		"mob":
-			hide() # Player disappears after being hit
+	print(body.get_script())
+	if body is Mob:
 			hit.emit()
-			collision_shape_2d.set_deferred("disabled", true)
-		"powerup":
+	elif body is BasePowerup:
 			body.effect()
-		_:
-			pass
 
 
 func start(pos: Vector2) -> void:

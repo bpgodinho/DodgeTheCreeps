@@ -1,7 +1,7 @@
 extends BasePowerup
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+signal picked_up
 # Called when the node enters the scene tree for the first time.
 func effect() -> void:
 	print("entered")

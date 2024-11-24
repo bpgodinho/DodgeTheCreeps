@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://q35rylql08eo"]
+[gd_scene load_steps=16 format=3 uid="uid://q35rylql08eo"]
 
 [ext_resource type="PackedScene" uid="uid://qmvuop24t861" path="res://player/player.tscn" id="1_b3udp"]
 [ext_resource type="Script" path="res://main_scene/main.gd" id="1_whmjb"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://w3bk32qlbi1e" path="res://art/gameover.wav" id="6_64rg6"]
 [ext_resource type="PackedScene" uid="uid://tisb1nrfre6b" path="res://powerups/nuke_powerup/nuke_powerup.tscn" id="6_wwfqw"]
 [ext_resource type="PackedScene" uid="uid://ce136o4t1wrjp" path="res://powerups/double_powerup/double_powerup.tscn" id="7_meoix"]
+[ext_resource type="PackedScene" uid="uid://d1yhjvouya8ub" path="res://hud/pause_menu.tscn" id="12_stnnb"]
 
 [sub_resource type="Gradient" id="Gradient_vpnji"]
 colors = PackedColorArray(0.263812, 0.127635, 0.520061, 1, 0.0366671, 2.88604e-05, 0.152347, 1)
@@ -74,11 +75,20 @@ unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 stream = ExtResource("5_cmpe7")
 
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_64rg6")
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_64rg6")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_stnnb")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
@@ -86,3 +96,7 @@ stream = ExtResource("6_64rg6")
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="mute_audio" from="PauseMenu" to="." method="mute_sfx"]
+[connection signal="mute_music" from="PauseMenu" to="." method="mute_music"]
+[connection signal="restart" from="PauseMenu" to="." method="restart"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]

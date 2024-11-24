@@ -16,20 +16,52 @@ var increment: int = 1
 @onready var hud: HUD = %HUD
 @onready var background_music: AudioStreamPlayer = %BackgroundMusic
 @onready var game_over_music: AudioStreamPlayer = %GameOverMusic
+@onready var pause_menu: CanvasLayer = %PauseMenu
+@onready var sfx: AudioStreamPlayer = %Sfx
 
+var playing: bool = false
+
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_P) && playing:
+		pause_menu.show()
+		get_tree().paused = true
+
+
+func mute_sfx() -> void:
+	print("mute_sfx")
+	sfx.volume_db = -80 if sfx.volume_db == 0 else 0
+
+
+func mute_music() -> void:
+	print("mute_music")
+	background_music.volume_db = -80 if background_music.volume_db == 0 else 0
 
 
 func _on_player_hit() -> void:
 	# Game Over
+	game_over_music.play()
+	hud.show_game_over()
+	playing = false
 	mob_timer.stop()
 	score_timer.stop()
 	powerup_timer.stop()
-	hud.show_game_over()
 	background_music.stop()
-	game_over_music.play()
+	player.hide()
+	player.collision_shape_2d.set_deferred("disabled", true)
 
+
+func restart() -> void:
+	playing = false
+	mob_timer.stop()
+	score_timer.stop()
+	powerup_timer.stop()
+	background_music.stop()
+	player.hide()
+	player.collision_shape_2d.set_deferred("disabled", true)
+	new_game()
 
 func new_game() -> void:
+	playing = true
 	score = 0
 	player.start(start_position.position)
 	start_timer.start()
@@ -72,3 +104,7 @@ func _on_powerup_timer_timeout() -> void:
 	var powerup := powerup_scene.pick_random().instantiate() as BasePowerup
 	add_child(powerup)
 	powerup.spawn(Vector2(randf_range(64,416),randf_range(64,656)))
+
+
+func _on_pause_menu_resume() -> void:
+	playing = true

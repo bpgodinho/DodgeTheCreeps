@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcet2yxkjg6v"]
+
+[ext_resource type="Script" path="res://hud/SoundButton/sound_btn.gd" id="1_2wp12"]
+
+[node name="SoundBtn" type="Button"]
+texture_filter = 4
+custom_minimum_size = Vector2(0, 51)
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/icon_max_width = 40
+toggle_mode = true
+icon_alignment = 1
+script = ExtResource("1_2wp12")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
