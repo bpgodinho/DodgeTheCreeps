@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://wbt36qacffjn" path="res://hud/SoundButton/Art/SoundIcon.png" id="6_dl1a5"]
 [ext_resource type="Texture2D" uid="uid://d1x5qkruk00cp" path="res://hud/SoundButton/Art/SoundIconMute.png" id="7_d8gdx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_uv6oy"]
+font_size = 400
+
 [sub_resource type="Gradient" id="Gradient_k558t"]
 offsets = PackedFloat32Array(0.527559, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.694118)
@@ -17,9 +20,6 @@ gradient = SubResource("Gradient_k558t")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_uv6oy"]
-font_size = 50
-
 [sub_resource type="LabelSettings" id="LabelSettings_07btp"]
 font = ExtResource("2_ug72u")
 font_size = 35
@@ -27,6 +27,35 @@ font_size = 35
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_4lpn6")
+
+[node name="CountdownControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Countdown" type="Label" parent="CountdownControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -68.5
+offset_right = 28.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_uv6oy")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -46,39 +75,6 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = SubResource("GradientTexture2D_3tx18")
-
-[node name="CountdownControl" type="Control" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 220.0
-offset_top = 340.0
-offset_right = 220.0
-offset_bottom = 340.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Countdown" type="Label" parent="Control/CountdownControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.5
-offset_top = -68.5
-offset_right = 28.5
-offset_bottom = 68.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "1"
-label_settings = SubResource("LabelSettings_uv6oy")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1

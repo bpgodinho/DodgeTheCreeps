@@ -28,12 +28,10 @@ func _process(delta: float) -> void:
 
 
 func mute_sfx() -> void:
-	print("mute_sfx")
 	sfx.volume_db = -80 if sfx.volume_db == 0 else 0
 
 
 func mute_music() -> void:
-	print("mute_music")
 	background_music.volume_db = -80 if background_music.volume_db == 0 else 0
 
 
